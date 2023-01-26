@@ -11,3 +11,14 @@ export const BLOCK_FLAG = {
 export const DEFAULT_BOARD_WIDTH = 9 as const;
 export const DEFAULT_BOARD_HEIGHT = 9 as const;
 export const DEFAULT_MINE_COUNT = 10 as const;
+
+export const nearByDirection = [
+  [-1, -1],
+  [-1, 0],
+  [-1, 1],
+  [0, -1],
+  [0, 1],
+  [1, -1],
+  [1, 0],
+  [1, 1],
+];

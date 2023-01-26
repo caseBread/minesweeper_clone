@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createArray } from '../../utils/array';
 import { BLOCK_FLAG } from '../../utils/constants';
-import { plantMine } from '../../utils/logic';
+import { plantMine, searchNearbyMine } from '../../utils/logic';
 import { initialState } from './state';
 
 const gameSlice = createSlice({
@@ -33,6 +33,18 @@ const gameSlice = createSlice({
        *    게임종료. (패배)
        *
        */
+
+      const { index } = action.payload;
+      const block = state.board[index];
+      switch (block) {
+        case BLOCK_FLAG.NORMAL:
+          state.board[index] = searchNearbyMine(state.board, index, state.width);
+          break;
+        case BLOCK_FLAG.MINE:
+          break;
+        default:
+          break;
+      }
     },
   },
 });
