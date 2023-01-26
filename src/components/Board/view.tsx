@@ -8,7 +8,7 @@ const BoardView = ({ width, height }: IBoardView) => {
   const boardArray = useMemo(() => createArray(width, height, null), [height, width]);
   const boardSize = useMemo(() => getBoardSize(width, 4), [width]);
   return (
-    <div className={`${boardSize} m-4`}>
+    <div className={`${boardSize}`}>
       {boardArray.map((_, i) => {
         const [x, y] = [i % width, Math.floor(i / width)];
         return <Block key={x * y + x} x={x} y={y} />;
