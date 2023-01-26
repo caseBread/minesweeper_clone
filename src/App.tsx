@@ -3,7 +3,7 @@ import Setting from './components/Setting';
 
 const App = () => {
   return (
-    <div className="transform-center w-fit h-fit">
+    <div className="transform-center bg-slate-400 rounded-md">
       <Setting />
       <Board />
     </div>

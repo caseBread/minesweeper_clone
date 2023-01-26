@@ -1,6 +1,7 @@
+import { IBlock } from './type';
 import BlockView from './view';
 
-const Block = () => {
+const Block = ({ x, y }: IBlock) => {
   return <BlockView />;
 };
 

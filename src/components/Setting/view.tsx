@@ -1,4 +1,4 @@
 const SettingView = () => {
-  return <>settingView</>;
+  return <div>settingView</div>;
 };
 export default SettingView;
