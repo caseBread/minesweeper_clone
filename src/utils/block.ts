@@ -1,4 +1,6 @@
-export const getBlockState = (blockFlag: number): string | null => {
+import { GAME_FLAG } from './constants';
+
+export const getBlockState = (blockFlag: number, gameState: number): string | null => {
   switch (blockFlag) {
     case 8:
     case 7:
@@ -15,8 +17,9 @@ export const getBlockState = (blockFlag: number): string | null => {
     case -3:
     case -4:
     case -5:
-    case -6:
       return null;
+    case -6:
+      return gameState === GAME_FLAG.DEFEAT ? '💣' : null;
     case -7:
       return '💣';
 
