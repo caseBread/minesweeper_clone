@@ -1,13 +1,13 @@
 import { ISettingView } from './type';
-import { Wrapper } from './style';
+import { Face, Wrapper } from './style';
 
 const SettingView = ({ mineNumber, face, timer, handleGameReset }: ISettingView) => {
   return (
     <Wrapper>
       <span>{mineNumber}</span>
-      <button type="button" onClick={handleGameReset}>
+      <Face type="button" onClick={handleGameReset}>
         {face}
-      </button>
+      </Face>
       <span>{timer}</span>
     </Wrapper>
   );

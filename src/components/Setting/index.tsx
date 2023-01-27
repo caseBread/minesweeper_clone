@@ -1,10 +1,15 @@
 import React, { useCallback, useMemo } from 'react';
-import { resetBoard } from '../../redux/game/slice';
-import { useAppDispatch } from '../../redux/hooks';
+import useTimer from '../../hooks/useTimer';
+import { resetBoard, selectGameState } from '../../redux/game/slice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+
+import { getFaceByGameState } from './util';
 import SettingView from './view';
 
 const Setting = () => {
   const dispatch = useAppDispatch();
+  const gameState = useAppSelector(selectGameState);
+  const [timer] = useTimer(gameState);
 
   const handleGameReset = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -16,11 +21,11 @@ const Setting = () => {
   const SettingViewProps = useMemo(() => {
     return {
       mineNumber: 10,
-      face: '😀',
-      timer: 90,
+      face: getFaceByGameState(gameState),
+      timer: timer,
       handleGameReset: handleGameReset,
     };
-  }, [handleGameReset]);
+  }, [gameState, handleGameReset, timer]);
 
   return <SettingView {...SettingViewProps} />;
 };

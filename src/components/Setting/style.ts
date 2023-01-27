@@ -5,3 +5,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   margin: 0.5rem 0;
 `;
+
+export const Face = styled.button`
+  font-size: 1.25rem;
+`;
