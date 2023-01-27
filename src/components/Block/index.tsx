@@ -23,6 +23,7 @@ const Block = ({ index }: IBlock) => {
   const BlockViewProps = useMemo(() => {
     return {
       viewState: getBlockState(blockFlag, gameState),
+      isRed: blockFlag === BLOCK_FLAG.DISCOVERED_MINE,
       isOpened:
         (gameState === GAME_FLAG.DEFEAT && blockFlag === BLOCK_FLAG.MINE) ||
         blockFlag === BLOCK_FLAG.OPENED ||

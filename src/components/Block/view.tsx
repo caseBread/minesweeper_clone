@@ -13,15 +13,18 @@ const ClosedButton = styled(Button)`
   border-color: rgb(156, 163, 175);
   border-width: 2px;
 `;
-const OpenedButton = styled(Button)`
+const OpenedButton = styled(Button)<{ isRed: boolean }>`
   text-align: center;
+  background-color: ${(props) => props.isRed && 'red'};
 `;
 
-const BlockView = ({ viewState, isOpened, handleBlockClick }: IBlockView) => {
+const BlockView = ({ viewState, isRed, isOpened, handleBlockClick }: IBlockView) => {
   return (
     <>
       {isOpened ? (
-        <OpenedButton type="button">{viewState}</OpenedButton>
+        <OpenedButton type="button" isRed={isRed}>
+          {viewState}
+        </OpenedButton>
       ) : (
         <ClosedButton type="button" onClick={handleBlockClick}></ClosedButton>
       )}
