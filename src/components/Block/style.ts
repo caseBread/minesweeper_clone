@@ -15,4 +15,6 @@ export const ClosedButton = styled(Button)`
 export const OpenedButton = styled(Button)<{ isRed: boolean }>`
   text-align: center;
   background-color: ${(props) => props.isRed && 'red'};
+  font-weight: 700;
+  color: white;
 `;

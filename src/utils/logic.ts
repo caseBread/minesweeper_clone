@@ -32,18 +32,22 @@ export const shuffleMine = (length: number, mineCount: number, donotMineIndex?: 
 const isNearbyIndex = (nearByDirection: number[][], index: number, nowIndex: number, width: number) => {
   const [x, y] = [getX(width, index), getY(width, index)];
   const [nowX, nowY] = [getX(width, nowIndex), getY(width, nowIndex)];
+  let ok = false;
   nearByDirection.forEach((direct) => {
     if (x + direct[0] === nowX && y + direct[1] === nowY) {
-      return true;
+      ok = true;
+      return;
     }
   });
-  return false;
+  return ok;
 };
 
 const getNearbyIndexList = (board: number[], index: number, width: number): number[] => {
   const nearbyIndexList = [];
   for (let i = 0; i < board.length; i++) {
-    if (isNearbyIndex(nearByDirection, index, i, width)) nearbyIndexList.push(i);
+    if (isNearbyIndex(nearByDirection, index, i, width)) {
+      nearbyIndexList.push(i);
+    }
   }
 
   return nearbyIndexList;
@@ -55,6 +59,8 @@ export const searchNearbyMine = (board: number[], index: number, width: number):
     if (board[cur] === BLOCK_FLAG.MINE) return (acc += 1);
     else return acc;
   }, 0);
+
+  console.log(index, nearbyMineCount, nearbyIndexList);
 
   return nearbyMineCount;
 };
