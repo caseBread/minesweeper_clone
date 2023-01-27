@@ -13,7 +13,9 @@ const ClosedButton = styled(Button)`
   border-color: rgb(156, 163, 175);
   border-width: 2px;
 `;
-const OpenedButton = styled(Button)``;
+const OpenedButton = styled(Button)`
+  text-align: center;
+`;
 
 const BlockView = ({ state, isOpened, handleBlockClick }: IBlockView) => {
   return (
