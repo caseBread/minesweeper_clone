@@ -1,8 +1,8 @@
 import { getX, getY } from './array';
 import { BLOCK_FLAG, nearByDirection } from './constants';
 
-export const plantMine = (board: number[], mineCount: number): number[] => {
-  const mines = shuffleMine(board.length, mineCount);
+export const plantMine = (board: number[], mineCount: number, index?: number): number[] => {
+  const mines = shuffleMine(board.length, mineCount, index);
   const minePlantedBoard = board.map((x, i) => (mines.indexOf(i) !== -1 ? BLOCK_FLAG.MINE : BLOCK_FLAG.NORMAL));
   return minePlantedBoard;
 };
@@ -16,12 +16,12 @@ const sameNumber = (shuffleArray: number[], n: number): boolean => {
   return false;
 };
 
-export const shuffleMine = (length: number, mineCount: number): number[] => {
+export const shuffleMine = (length: number, mineCount: number, donotMineIndex?: number): number[] => {
   const shuffleArray = [];
   let i = 0;
   while (i < mineCount) {
     const n = Math.floor(Math.random() * length);
-    if (!sameNumber(shuffleArray, n)) {
+    if (!sameNumber(shuffleArray, n) && donotMineIndex !== n) {
       shuffleArray.push(n);
       i++;
     }

@@ -36,12 +36,13 @@ const gameSlice = createSlice({
        *
        */
 
+      const { index }: { index: number } = action.payload;
+
       if (state.gameState === GAME_FLAG.READY) {
         state.gameState = GAME_FLAG.RUNNING;
-        state.board = plantMine(createArray(state.width, state.height, BLOCK_FLAG.NORMAL), state.mineCount);
+        state.board = plantMine(state.board, state.mineCount, index);
       }
 
-      const { index } = action.payload;
       const block = state.board[index];
 
       switch (block) {
