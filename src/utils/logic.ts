@@ -3,7 +3,7 @@ import { BLOCK_FLAG, nearByDirection } from './constants';
 
 export const plantMine = (board: number[], mineCount: number): number[] => {
   const mines = shuffleMine(board.length, mineCount);
-  const minePlantedBoard = board.map((x, i) => (mines.indexOf(i + 1) ? BLOCK_FLAG.MINE : BLOCK_FLAG.NORMAL));
+  const minePlantedBoard = board.map((x, i) => (mines.indexOf(i) !== -1 ? BLOCK_FLAG.MINE : BLOCK_FLAG.NORMAL));
   return minePlantedBoard;
 };
 
@@ -23,6 +23,7 @@ export const shuffleMine = (length: number, mineCount: number): number[] => {
     const n = Math.floor(Math.random() * length);
     if (!sameNumber(shuffleArray, n)) {
       shuffleArray.push(n);
+      i++;
     }
   }
   return shuffleArray;

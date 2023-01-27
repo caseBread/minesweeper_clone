@@ -15,6 +15,7 @@ const gameSlice = createSlice({
       state.mineCount = action.payload.mineCount;
     },
     resetBoard: (state) => {
+      state.gameState = GAME_FLAG.READY;
       state.board = plantMine(createArray(state.width, state.height, BLOCK_FLAG.NORMAL), state.mineCount);
       state.normalCount = state.width * state.height - state.mineCount;
     },
@@ -34,6 +35,11 @@ const gameSlice = createSlice({
        *    게임종료. (패배)
        *
        */
+
+      if (state.gameState === GAME_FLAG.READY) {
+        state.gameState = GAME_FLAG.RUNNING;
+        state.board = plantMine(createArray(state.width, state.height, BLOCK_FLAG.NORMAL), state.mineCount);
+      }
 
       const { index } = action.payload;
       const block = state.board[index];
