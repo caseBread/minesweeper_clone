@@ -15,9 +15,11 @@ export const getBlockState = (blockFlag: number): string | null => {
     case -3:
     case -4:
     case -5:
-      return null;
     case -6:
+      return null;
+    case -7:
       return '💣';
+
     default:
       throw new Error(`정의되지 않은 block flag 입니다. : ${blockFlag}`);
   }

@@ -6,6 +6,7 @@ export const BLOCK_FLAG = {
   QUESTION_MINE: -4,
   FLAG_MINE: -5,
   MINE: -6,
+  DISCOVERED_MINE: -7,
 } as const;
 
 export const GAME_FLAG = {

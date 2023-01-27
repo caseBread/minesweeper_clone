@@ -17,11 +17,11 @@ const OpenedButton = styled(Button)`
   text-align: center;
 `;
 
-const BlockView = ({ state, isOpened, handleBlockClick }: IBlockView) => {
+const BlockView = ({ viewState, isOpened, handleBlockClick }: IBlockView) => {
   return (
     <>
       {isOpened ? (
-        <OpenedButton type="button">{state}</OpenedButton>
+        <OpenedButton type="button">{viewState}</OpenedButton>
       ) : (
         <ClosedButton type="button" onClick={handleBlockClick}></ClosedButton>
       )}

@@ -21,8 +21,8 @@ const Block = ({ index }: IBlock) => {
 
   const BlockViewProps = useMemo(() => {
     return {
-      state: getBlockState(blockFlag),
-      isOpened: blockFlag !== BLOCK_FLAG.NORMAL,
+      viewState: getBlockState(blockFlag),
+      isOpened: blockFlag === BLOCK_FLAG.OPENED || blockFlag === BLOCK_FLAG.DISCOVERED_MINE,
       handleBlockClick: handleBlockClick,
     };
   }, [blockFlag, handleBlockClick]);

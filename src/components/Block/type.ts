@@ -5,7 +5,7 @@ export interface IBlock {
 }
 
 export interface IBlockView {
-  state: string | null;
+  viewState: string | null;
   isOpened: boolean;
   handleBlockClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }

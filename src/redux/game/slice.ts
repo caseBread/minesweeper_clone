@@ -32,6 +32,8 @@ const gameSlice = createSlice({
        *    게임종료. (승리)
        *
        * 2. 지뢰가 있는 경우
+       *    해당 지뢰를 DISCOVERED_MINE으로 바꾼다. (배경 빨간색)
+       *    다른 지뢰들도 보여준다.
        *    게임종료. (패배)
        *
        */
@@ -43,9 +45,9 @@ const gameSlice = createSlice({
         state.board = plantMine(state.board, state.mineCount, index);
       }
 
-      const block = state.board[index];
+      const blockFlag = state.board[index];
 
-      switch (block) {
+      switch (blockFlag) {
         // 한 칸의 근처지뢰개수 계산
 
         case BLOCK_FLAG.NORMAL:
@@ -54,6 +56,7 @@ const gameSlice = createSlice({
           break;
         // 게임 패배 로직
         case BLOCK_FLAG.MINE:
+          state.board[index] = BLOCK_FLAG.DISCOVERED_MINE;
           state.gameState = GAME_FLAG.DEFEAT;
           break;
         default:
