@@ -15,9 +15,11 @@ const Block = ({ index }: IBlock) => {
 
   const handleBlockClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-      dispatch(activeBlock({ index }));
+      if (gameState === GAME_FLAG.READY || gameState === GAME_FLAG.RUNNING) {
+        dispatch(activeBlock({ index }));
+      }
     },
-    [dispatch, index]
+    [dispatch, gameState, index]
   );
 
   const BlockViewProps = useMemo(() => {
