@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createArray } from '../../utils/array';
-import { BLOCK_FLAG } from '../../utils/constants';
+import { BLOCK_FLAG, GAME_FLAG } from '../../utils/constants';
 import { plantMine, searchNearbyMine } from '../../utils/logic';
 import { initialState } from './state';
 
@@ -37,13 +37,22 @@ const gameSlice = createSlice({
       const { index } = action.payload;
       const block = state.board[index];
       switch (block) {
+        // 한 칸의 근처지뢰개수 계산
         case BLOCK_FLAG.NORMAL:
           state.board[index] = searchNearbyMine(state.board, index, state.width);
+          state.normalCount--;
           break;
+        // 게임 패배 로직
         case BLOCK_FLAG.MINE:
+          state.gameState = GAME_FLAG.DEFEAT;
           break;
         default:
           break;
+      }
+
+      // 게임 승리 로직
+      if (state.normalCount === 0) {
+        state.gameState = GAME_FLAG.WIN;
       }
     },
   },
