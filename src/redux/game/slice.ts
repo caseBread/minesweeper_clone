@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { createArray } from '../../utils/array';
 import { BLOCK_FLAG, GAME_FLAG } from '../../utils/constants';
 import { plantMine, searchNearbyMine } from '../../utils/logic';
+import { RootState } from '../store';
 import { initialState } from './state';
 
 const gameSlice = createSlice({
@@ -36,8 +37,10 @@ const gameSlice = createSlice({
 
       const { index } = action.payload;
       const block = state.board[index];
+
       switch (block) {
         // 한 칸의 근처지뢰개수 계산
+
         case BLOCK_FLAG.NORMAL:
           state.board[index] = searchNearbyMine(state.board, index, state.width);
           state.normalCount--;
@@ -57,5 +60,14 @@ const gameSlice = createSlice({
     },
   },
 });
+
+export const { configuration, resetBoard, activeBlock } = gameSlice.actions;
+
+export const selectWidth = (state: RootState) => state.game.width;
+export const selectHeight = (state: RootState) => state.game.height;
+export const selectBoard = (state: RootState) => state.game.board;
+export const selectMineCount = (state: RootState) => state.game.mineCount;
+export const selectNormalCount = (state: RootState) => state.game.normalCount;
+export const selectGameState = (state: RootState) => state.game.gameState;
 
 export default gameSlice;

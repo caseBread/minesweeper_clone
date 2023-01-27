@@ -1,8 +1,11 @@
+import React from 'react';
+
 export interface IBlock {
-  x: number;
-  y: number;
+  index: number;
 }
 
 export interface IBlockView {
-  blockState: string;
+  state: string | null;
+  isOpened: boolean;
+  handleBlockClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }

@@ -1,19 +1,22 @@
-import { useMemo } from 'react';
-import { createArray } from '../../utils/array';
-import { getBoardSize } from '../../utils/boardSize';
+import styled from 'styled-components';
+import { selectBoard } from '../../redux/game/slice';
+import { useAppSelector } from '../../redux/hooks';
 import Block from '../Block';
 import { IBoardView } from './type';
 
+const Wrapper = styled.div<{ width: number }>`
+  width: ${(props) => `${props.width}rem`};
+`;
+
 const BoardView = ({ width, height }: IBoardView) => {
-  const boardArray = useMemo(() => createArray(width, height, null), [height, width]);
-  const boardSize = useMemo(() => getBoardSize(width, 4), [width]);
+  const board = useAppSelector(selectBoard);
+
   return (
-    <div className={`${boardSize}`}>
-      {boardArray.map((_, i) => {
-        const [x, y] = [i % width, Math.floor(i / width)];
-        return <Block key={x * y + x} x={x} y={y} />;
+    <Wrapper width={width}>
+      {board.map((_, i) => {
+        return <Block key={i} index={i} />;
       })}
-    </div>
+    </Wrapper>
   );
 };
 export default BoardView;
