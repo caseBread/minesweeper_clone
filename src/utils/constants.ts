@@ -16,8 +16,8 @@ export const GAME_FLAG = {
   WIN: 3,
 } as const;
 
-export const DEFAULT_BOARD_WIDTH = 9 as const;
-export const DEFAULT_BOARD_HEIGHT = 9 as const;
+export const DEFAULT_BOARD_WIDTH = 8 as const;
+export const DEFAULT_BOARD_HEIGHT = 8 as const;
 export const DEFAULT_MINE_COUNT = 10 as const;
 
 // 방향을 미리 정의 (bfs에 활용)
