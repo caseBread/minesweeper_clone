@@ -29,15 +29,19 @@ const gameSlice = createSlice({
        *    주변 지뢰수를 보여준다
        *
        *  1-2. 주변 지뢰수가 0인 경우
-       *    주변에 지뢰수가 0인 칸을 전부 열어준다(bfs)
+       *    주변에 지뢰수가 0인 칸을 전부 열어줍니다(bfs)
+       *
+       *  (1-1, 1-2는 같은 로직 (getOpenedBlockList)로 처리합니다.)
+       *
        *
        *  1-3. normalCount가 0인 경우
        *    게임종료. (승리)
        *
        * 2. 지뢰가 있는 경우
-       *    해당 지뢰를 DISCOVERED_MINE으로 바꾼다. (배경 빨간색)
+       *    해당 지뢰를 DISCOVERED_MINE으로 바꾼다.
        *    다른 지뢰들도 보여준다.
        *    게임종료. (패배)
+       *
        *
        */
 
@@ -52,7 +56,6 @@ const gameSlice = createSlice({
 
       switch (blockFlag) {
         // 한 칸의 근처지뢰개수 계산
-
         case BLOCK_FLAG.NORMAL:
           /**
            * 하나의 normal칸을 클릭 시 주변에 0이있으면 같이공개 + 없으면 하나만 공개

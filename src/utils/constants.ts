@@ -19,13 +19,8 @@ export const GAME_FLAG = {
 export const DEFAULT_BOARD_WIDTH = 9 as const;
 export const DEFAULT_BOARD_HEIGHT = 9 as const;
 export const DEFAULT_MINE_COUNT = 10 as const;
-/** 게임 state
- * 0 : 게임 시작 전
- * 1 : 게임 중
- * 2 : 게임 패배
- * 3 : 게임 승리
- */
 
+// 방향을 미리 정의 (bfs에 활용)
 export const nearbyDirection = [
   [-1, -1],
   [-1, 0],
