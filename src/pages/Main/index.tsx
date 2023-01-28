@@ -28,7 +28,7 @@ const Main = () => {
       </Wrapper>
       {viewModal && (
         <Modal close={() => setViewModal(false)}>
-          <Configuration />
+          <Configuration close={() => setViewModal(false)} />
         </Modal>
       )}
     </>
