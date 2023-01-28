@@ -117,3 +117,13 @@ export const getOpenedBlockList = (board: number[], startIndex: number, width: n
 
   return openedBlockList;
 };
+
+export const getMineList = (board: number[]): number[] => {
+  const mineList: number[] = [];
+  board.forEach((block, idx) => {
+    if (block === BLOCK_FLAG.MINE) {
+      mineList.push(idx);
+    }
+  });
+  return mineList;
+};

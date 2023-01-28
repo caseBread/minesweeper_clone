@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createArray } from '../../utils/array';
 import { BLOCK_FLAG, GAME_FLAG } from '../../utils/constants';
-import { getOpenedBlockList, plantMine, searchNearbyMine } from '../../utils/logic';
+import { getMineList, getOpenedBlockList, plantMine, searchNearbyMine } from '../../utils/logic';
 import { RootState } from '../store';
 import { initialState } from './state';
 
@@ -81,6 +81,10 @@ const gameSlice = createSlice({
       // 게임 승리 로직
       if (state.normalCount === 0) {
         state.gameState = GAME_FLAG.WIN;
+        const mineList = getMineList(state.board);
+        mineList.forEach((blockIndex) => {
+          state.board[blockIndex] = BLOCK_FLAG.MARK_MINE;
+        });
       }
     },
 
