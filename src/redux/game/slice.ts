@@ -14,6 +14,8 @@ const gameSlice = createSlice({
       state.height = action.payload.height;
       state.mineCount = action.payload.mineCount;
       state.board = plantMine(createArray(state.width, state.height, BLOCK_FLAG.NORMAL), state.mineCount);
+      state.normalCount = state.width * state.height - state.mineCount;
+      state.gameState = GAME_FLAG.READY;
     },
     resetBoard: (state) => {
       state.gameState = GAME_FLAG.READY;
