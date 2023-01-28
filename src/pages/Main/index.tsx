@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import Board from '../../components/Board';
 import Modal from '../../components/common/Modal';
+import Configuration from '../../components/Configuration';
 import Edit from '../../components/Edit';
 import Setting from '../../components/Setting';
 import { Wrapper } from './style';
@@ -25,7 +26,11 @@ const Main = () => {
         <Setting />
         <Board />
       </Wrapper>
-      {viewModal && <Modal close={() => setViewModal(false)}>blah</Modal>}
+      {viewModal && (
+        <Modal close={() => setViewModal(false)}>
+          <Configuration />
+        </Modal>
+      )}
     </>
   );
 };
