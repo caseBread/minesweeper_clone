@@ -84,6 +84,7 @@ const gameSlice = createSlice({
       }
     },
 
+    // controlMark : 깃발과 물음표 표시 기능을 처리
     controlMark: (state, action) => {
       const { index }: { index: number } = action.payload;
       if (state.gameState === GAME_FLAG.READY) {
@@ -92,7 +93,11 @@ const gameSlice = createSlice({
 
       const blockFlag = state.board[index];
 
+      // 지뢰를 마크하는 경우와 빈칸을 마크하는 경우를 나누어 계산
+      // block의 state를 state.board라는 값 하나에 의존하여 계산하기 때문에
+      // 지뢰의 상태를 변경했다면 다시 지뢰로 되돌아갈 수 있게 로직을 구성해야한다. 빈칸의 경우도 마찬가지.
       switch (blockFlag) {
+        // 빈칸 3단토글 로직
         case BLOCK_FLAG.NORMAL:
           state.board[index] = BLOCK_FLAG.MARK;
           state.nowMineCount--;
@@ -104,6 +109,8 @@ const gameSlice = createSlice({
         case BLOCK_FLAG.QUESTION:
           state.board[index] = BLOCK_FLAG.NORMAL;
           break;
+
+        // 지뢰 3단토글 로직
         case BLOCK_FLAG.MINE:
           state.board[index] = BLOCK_FLAG.MARK_MINE;
           state.nowMineCount--;
@@ -115,6 +122,7 @@ const gameSlice = createSlice({
         case BLOCK_FLAG.QUESTION_MINE:
           state.board[index] = BLOCK_FLAG.MINE;
           break;
+
         default:
           throw new Error(`표시를 할 수 없는 상태의 블럭입니다. ${blockFlag}`);
       }
