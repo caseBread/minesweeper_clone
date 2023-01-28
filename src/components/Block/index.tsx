@@ -9,7 +9,6 @@ import BlockView from './view';
 
 const Block = ({ index }: IBlock) => {
   const dispatch = useAppDispatch();
-  // TODO : select함수 활용하기
   const blockFlag = useAppSelector((state: RootState) => state.game.board[index]);
   const gameState = useAppSelector(selectGameState);
 

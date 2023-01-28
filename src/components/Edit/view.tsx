@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import Modal from '../common/Modal';
 import { Wrapper } from './style';
 import { IEditView } from './type';
 

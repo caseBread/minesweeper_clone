@@ -7,13 +7,3 @@
         @apply bg-gray-600 leading-4;
     }
 }
-
-@layer components {
-    .flex-center {
-        @apply flex justify-center items-start
-    }
-
-    .transform-center {
-        @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
-    }
-}
