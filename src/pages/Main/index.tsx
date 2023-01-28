@@ -1,15 +1,32 @@
+import { useCallback, useMemo, useState } from 'react';
 import Board from '../../components/Board';
+import Modal from '../../components/common/Modal';
 import Edit from '../../components/Edit';
 import Setting from '../../components/Setting';
 import { Wrapper } from './style';
 
 const Main = () => {
+  const [viewModal, setViewModal] = useState(false);
+
+  const handleOpenModal = useCallback(() => {
+    setViewModal(true);
+  }, []);
+
+  const EditProps = useMemo(() => {
+    return {
+      handleOpenModal,
+    };
+  }, [handleOpenModal]);
+
   return (
-    <Wrapper>
-      <Edit />
-      <Setting />
-      <Board />
-    </Wrapper>
+    <>
+      <Wrapper>
+        <Edit {...EditProps} />
+        <Setting />
+        <Board />
+      </Wrapper>
+      {viewModal && <Modal close={() => setViewModal(false)}>blah</Modal>}
+    </>
   );
 };
 

@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import Modal from '../common/Modal';
 import { Wrapper } from './style';
+import { IEditView } from './type';
 
-const EditView = () => {
-  const [viewModal, setViewModal] = useState(false);
+const EditView = ({ handleOpenModal }: IEditView) => {
   return (
     <Wrapper>
-      <button type="button" onClick={() => setViewModal(true)}>
+      <button type="button" onClick={handleOpenModal}>
         edit
       </button>
-      {viewModal && <Modal close={() => setViewModal(false)}>blah</Modal>}
     </Wrapper>
   );
 };
