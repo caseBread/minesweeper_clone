@@ -86,7 +86,8 @@ export const getOpenedBlockList = (board: number[], startIndex: number, width: n
       const nowIndex = getIndex(width, x + dx, y + dy);
       if (0 <= x + dx && x + dx < width && 0 <= y + dy && y + dy < height) {
         // 방문하지 않았을 경우 result list에 넣는다.
-        if (!visited[nowIndex]) {
+        // 이미 제거했던 칸이면 list에 넣지 않는다.
+        if (!visited[nowIndex] && board[nowIndex] < 0) {
           visited[nowIndex] = true;
           openedBlockList.push(nowIndex);
 
