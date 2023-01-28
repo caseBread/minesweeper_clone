@@ -62,11 +62,15 @@ const getNearbyIndexList = (board: number[], index: number, width: number): numb
   return nearbyIndexList;
 };
 
+const isMineBlock = (block: number): boolean => {
+  return block === BLOCK_FLAG.MINE || block === BLOCK_FLAG.MARK_MINE || block === BLOCK_FLAG.QUESTION_MINE;
+};
+
 // searchNearbyMine : 특정 칸의 근처 지뢰 수를 반환합니다.
 export const searchNearbyMine = (board: number[], index: number, width: number): number => {
   const nearbyIndexList = getNearbyIndexList(board, index, width);
   const nearbyMineCount = nearbyIndexList.reduce((acc, cur, idx) => {
-    if (board[cur] === BLOCK_FLAG.MINE) return (acc += 1);
+    if (isMineBlock(board[cur])) return (acc += 1);
     else return acc;
   }, 0);
 
