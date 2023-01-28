@@ -8,5 +8,6 @@ export interface IBlockView {
   viewState: string | null;
   isRed: boolean;
   isOpened: boolean;
-  handleBlockClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleLeftClickBlock: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleRightClickBlock: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }

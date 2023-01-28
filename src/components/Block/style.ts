@@ -5,6 +5,10 @@ export const Button = styled.button`
   height: 1rem;
   margin: 0;
   padding: 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: white;
 `;
 
 export const ClosedButton = styled(Button)`
@@ -13,8 +17,5 @@ export const ClosedButton = styled(Button)`
   border-width: 2px;
 `;
 export const OpenedButton = styled(Button)<{ isRed: boolean }>`
-  text-align: center;
   background-color: ${(props) => props.isRed && 'red'};
-  font-weight: 700;
-  color: white;
 `;

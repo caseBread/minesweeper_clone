@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { activeBlock, selectGameState } from '../../redux/game/slice';
+import { activeBlock, controlMark, selectGameState } from '../../redux/game/slice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { RootState } from '../../redux/store';
 import { getBlockState } from '../../utils/block';
@@ -13,13 +13,21 @@ const Block = ({ index }: IBlock) => {
   const blockFlag = useAppSelector((state: RootState) => state.game.board[index]);
   const gameState = useAppSelector(selectGameState);
 
-  const handleBlockClick = useCallback(
+  const handleLeftClickBlock = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       if (gameState === GAME_FLAG.READY || gameState === GAME_FLAG.RUNNING) {
         dispatch(activeBlock({ index }));
       }
     },
     [dispatch, gameState, index]
+  );
+
+  const handleRightClickBlock = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      dispatch(controlMark({ index }));
+    },
+    [dispatch, index]
   );
 
   const BlockViewProps = useMemo(() => {
@@ -30,9 +38,10 @@ const Block = ({ index }: IBlock) => {
         (gameState === GAME_FLAG.DEFEAT && blockFlag === BLOCK_FLAG.MINE) ||
         blockFlag >= 0 ||
         blockFlag === BLOCK_FLAG.DISCOVERED_MINE,
-      handleBlockClick: handleBlockClick,
+      handleLeftClickBlock,
+      handleRightClickBlock,
     };
-  }, [blockFlag, gameState, handleBlockClick]);
+  }, [blockFlag, gameState, handleLeftClickBlock, handleRightClickBlock]);
 
   return <BlockView {...BlockViewProps} />;
 };

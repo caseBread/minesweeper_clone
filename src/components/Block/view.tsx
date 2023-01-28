@@ -1,7 +1,7 @@
 import { ClosedButton, OpenedButton } from './style';
 import { IBlockView } from './type';
 
-const BlockView = ({ viewState, isRed, isOpened, handleBlockClick }: IBlockView) => {
+const BlockView = ({ viewState, isRed, isOpened, handleLeftClickBlock, handleRightClickBlock }: IBlockView) => {
   return (
     <>
       {isOpened ? (
@@ -9,7 +9,9 @@ const BlockView = ({ viewState, isRed, isOpened, handleBlockClick }: IBlockView)
           {viewState}
         </OpenedButton>
       ) : (
-        <ClosedButton type="button" onClick={handleBlockClick}></ClosedButton>
+        <ClosedButton type="button" onClick={handleLeftClickBlock} onContextMenu={handleRightClickBlock}>
+          {viewState}
+        </ClosedButton>
       )}
     </>
   );

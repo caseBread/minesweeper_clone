@@ -81,10 +81,42 @@ const gameSlice = createSlice({
         state.gameState = GAME_FLAG.WIN;
       }
     },
+
+    controlMark: (state, action) => {
+      const { index }: { index: number } = action.payload;
+      if (state.gameState === GAME_FLAG.READY) {
+        state.gameState = GAME_FLAG.RUNNING;
+      }
+
+      const blockFlag = state.board[index];
+
+      switch (blockFlag) {
+        case BLOCK_FLAG.NORMAL:
+          state.board[index] = BLOCK_FLAG.MARK;
+          break;
+        case BLOCK_FLAG.MARK:
+          state.board[index] = BLOCK_FLAG.QUESTION;
+          break;
+        case BLOCK_FLAG.QUESTION:
+          state.board[index] = BLOCK_FLAG.NORMAL;
+          break;
+        case BLOCK_FLAG.MINE:
+          state.board[index] = BLOCK_FLAG.MARK_MINE;
+          break;
+        case BLOCK_FLAG.MARK_MINE:
+          state.board[index] = BLOCK_FLAG.QUESTION_MINE;
+          break;
+        case BLOCK_FLAG.QUESTION_MINE:
+          state.board[index] = BLOCK_FLAG.MINE;
+          break;
+        default:
+          throw new Error(`표시를 할 수 없는 상태의 블럭입니다. ${blockFlag}`);
+      }
+    },
   },
 });
 
-export const { configuration, resetBoard, activeBlock } = gameSlice.actions;
+export const { configuration, resetBoard, activeBlock, controlMark } = gameSlice.actions;
 
 export const selectWidth = (state: RootState) => state.game.width;
 export const selectHeight = (state: RootState) => state.game.height;
