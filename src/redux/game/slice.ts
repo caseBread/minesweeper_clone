@@ -13,6 +13,7 @@ const gameSlice = createSlice({
       state.width = action.payload.width;
       state.height = action.payload.height;
       state.mineCount = action.payload.mineCount;
+      state.nowMineCount = action.payload.mineCount;
       state.board = plantMine(createArray(state.width, state.height, BLOCK_FLAG.NORMAL), state.mineCount);
       state.normalCount = state.width * state.height - state.mineCount;
       state.gameState = GAME_FLAG.READY;
@@ -21,6 +22,7 @@ const gameSlice = createSlice({
       state.gameState = GAME_FLAG.READY;
       state.board = plantMine(createArray(state.width, state.height, BLOCK_FLAG.NORMAL), state.mineCount);
       state.normalCount = state.width * state.height - state.mineCount;
+      state.nowMineCount = state.mineCount;
     },
     activeBlock: (state, action) => {
       /**
@@ -93,18 +95,22 @@ const gameSlice = createSlice({
       switch (blockFlag) {
         case BLOCK_FLAG.NORMAL:
           state.board[index] = BLOCK_FLAG.MARK;
+          state.nowMineCount--;
           break;
         case BLOCK_FLAG.MARK:
           state.board[index] = BLOCK_FLAG.QUESTION;
+          state.nowMineCount++;
           break;
         case BLOCK_FLAG.QUESTION:
           state.board[index] = BLOCK_FLAG.NORMAL;
           break;
         case BLOCK_FLAG.MINE:
           state.board[index] = BLOCK_FLAG.MARK_MINE;
+          state.nowMineCount--;
           break;
         case BLOCK_FLAG.MARK_MINE:
           state.board[index] = BLOCK_FLAG.QUESTION_MINE;
+          state.nowMineCount++;
           break;
         case BLOCK_FLAG.QUESTION_MINE:
           state.board[index] = BLOCK_FLAG.MINE;
@@ -122,6 +128,7 @@ export const selectWidth = (state: RootState) => state.game.width;
 export const selectHeight = (state: RootState) => state.game.height;
 export const selectBoard = (state: RootState) => state.game.board;
 export const selectMineCount = (state: RootState) => state.game.mineCount;
+export const selectNowMineCount = (state: RootState) => state.game.nowMineCount;
 export const selectNormalCount = (state: RootState) => state.game.normalCount;
 export const selectGameState = (state: RootState) => state.game.gameState;
 

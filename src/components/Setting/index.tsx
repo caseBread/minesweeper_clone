@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import useTimer from '../../hooks/useTimer';
-import { resetBoard, selectGameState } from '../../redux/game/slice';
+import { resetBoard, selectGameState, selectNowMineCount } from '../../redux/game/slice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 import { getFaceByGameState } from './util';
@@ -9,6 +9,7 @@ import SettingView from './view';
 const Setting = () => {
   const dispatch = useAppDispatch();
   const gameState = useAppSelector(selectGameState);
+  const nowMineCount = useAppSelector(selectNowMineCount);
   const [timer] = useTimer(gameState);
 
   const handleGameReset = useCallback(
@@ -20,12 +21,12 @@ const Setting = () => {
 
   const SettingViewProps = useMemo(() => {
     return {
-      mineNumber: 10,
+      mineNumber: nowMineCount,
       face: getFaceByGameState(gameState),
       timer: timer,
       handleGameReset: handleGameReset,
     };
-  }, [gameState, handleGameReset, timer]);
+  }, [gameState, handleGameReset, nowMineCount, timer]);
 
   return <SettingView {...SettingViewProps} />;
 };
