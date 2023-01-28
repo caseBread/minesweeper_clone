@@ -3,7 +3,7 @@ import { Wrapper } from './style';
 const EditView = () => {
   return (
     <Wrapper>
-      <button>edit</button>
+      <button type="button">edit</button>
     </Wrapper>
   );
 };
