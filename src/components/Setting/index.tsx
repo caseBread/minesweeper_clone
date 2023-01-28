@@ -2,8 +2,8 @@ import React, { useCallback, useMemo } from 'react';
 import useTimer from '../../hooks/useTimer';
 import { resetBoard, selectGameState, selectNowMineCount } from '../../redux/game/slice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { getFaceByGameState } from '../../utils/setting';
 
-import { getFaceByGameState } from './util';
 import SettingView from './view';
 
 const Setting = () => {

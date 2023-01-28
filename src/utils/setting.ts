@@ -1,4 +1,4 @@
-import { GAME_FLAG } from '../../utils/constants';
+import { GAME_FLAG } from './constants';
 
 export const getFaceByGameState = (gameState: number) => {
   switch (gameState) {
