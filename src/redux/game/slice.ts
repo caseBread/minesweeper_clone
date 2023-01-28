@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createArray } from '../../utils/array';
 import { BLOCK_FLAG, GAME_FLAG } from '../../utils/constants';
-import { plantMine, searchNearbyMine } from '../../utils/logic';
+import { getOpenedBlockList, plantMine, searchNearbyMine } from '../../utils/logic';
 import { RootState } from '../store';
 import { initialState } from './state';
 
@@ -51,8 +51,15 @@ const gameSlice = createSlice({
         // 한 칸의 근처지뢰개수 계산
 
         case BLOCK_FLAG.NORMAL:
-          state.board[index] = searchNearbyMine(state.board, index, state.width);
-          state.normalCount--;
+          /**
+           * 하나의 normal칸을 클릭 시 주변에 0이있으면 같이공개 + 없으면 하나만 공개
+           */
+          const openedBlockList = getOpenedBlockList(state.board, index, state.width, state.height);
+          openedBlockList.forEach((blockIndex) => {
+            state.board[blockIndex] = searchNearbyMine(state.board, blockIndex, state.width);
+            state.normalCount--;
+          });
+
           break;
         // 게임 패배 로직
         case BLOCK_FLAG.MINE:

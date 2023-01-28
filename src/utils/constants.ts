@@ -26,7 +26,7 @@ export const DEFAULT_MINE_COUNT = 10 as const;
  * 3 : 게임 승리
  */
 
-export const nearByDirection = [
+export const nearbyDirection = [
   [-1, -1],
   [-1, 0],
   [-1, 1],

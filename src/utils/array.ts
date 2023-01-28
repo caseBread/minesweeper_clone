@@ -9,3 +9,7 @@ export const getY = (width: number, index: number) => {
 export const getX = (width: number, index: number) => {
   return index % width;
 };
+
+export const getIndex = (width: number, x: number, y: number) => {
+  return y * width + x;
+};
