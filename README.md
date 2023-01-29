@@ -7,9 +7,10 @@
 npm install
 ```
 
-2. 프로젝트 실행
+2. 프로젝트 빌드 후 실행
 ```
-npm start
+npm run build
+npx serve -s build
 ```
 
 ## 요구사항
