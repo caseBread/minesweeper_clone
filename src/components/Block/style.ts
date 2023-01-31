@@ -18,4 +18,6 @@ export const ClosedButton = styled(Button)`
 `;
 export const OpenedButton = styled(Button)<{ isRed: boolean }>`
   background-color: ${(props) => props.isRed && 'red'};
+  height: fit-content;
+  line-height: 0%;
 `;

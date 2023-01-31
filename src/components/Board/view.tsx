@@ -8,7 +8,7 @@ const BoardView = ({ width, height }: IBoardView) => {
   const board = useAppSelector(selectBoard);
 
   return (
-    <Wrapper width={width}>
+    <Wrapper width={width} height={height}>
       {board.map((_, i) => {
         return <Block key={i} index={i} />;
       })}
