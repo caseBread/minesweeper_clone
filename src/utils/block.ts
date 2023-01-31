@@ -19,7 +19,7 @@ export const getBlockState = (blockFlag: number, gameState: number): string | nu
       return '?';
     case BLOCK_FLAG.MARK_MINE:
     case BLOCK_FLAG.MARK:
-      return '⛳️';
+      return '🚩';
     case -6:
       return gameState === GAME_FLAG.DEFEAT ? '💣' : null;
     case -7:

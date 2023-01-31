@@ -15,6 +15,8 @@ export const ClosedButton = styled(Button)`
   background-color: rgb(209, 213, 219);
   border-color: rgb(156, 163, 175);
   border-width: 2px;
+  font-size: 0.5rem;
+  color: black;
 `;
 export const OpenedButton = styled(Button)<{ isRed: boolean }>`
   background-color: ${(props) => props.isRed && 'red'};
