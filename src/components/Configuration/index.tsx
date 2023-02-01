@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import useInput from '../../hooks/useInput';
 import { configuration } from '../../redux/game/slice';
 import { useAppDispatch } from '../../redux/hooks';
 import { IConfiguration } from './type';
@@ -6,21 +7,9 @@ import ConfigurationView from './view';
 
 const Configuration = ({ close }: IConfiguration) => {
   const dispatch = useAppDispatch();
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [mineCount, setMineCount] = useState(0);
-
-  const handleChangeWidth = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setWidth(Number(e.currentTarget.value));
-  }, []);
-
-  const handleChangeHeight = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setHeight(Number(e.currentTarget.value));
-  }, []);
-
-  const handleChangeMineCount = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setMineCount(Number(e.currentTarget.value));
-  }, []);
+  const [width, changeWidth] = useInput();
+  const [height, changeHeight] = useInput();
+  const [mineCount, changeMineCount] = useInput();
 
   const handleConfigurationFormSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
@@ -35,11 +24,11 @@ const Configuration = ({ close }: IConfiguration) => {
     return {
       handleSubmit: handleConfigurationFormSubmit,
       close,
-      handleChangeWidth,
-      handleChangeHeight,
-      handleChangeMineCount,
+      changeWidth,
+      changeHeight,
+      changeMineCount,
     };
-  }, [close, handleChangeHeight, handleChangeMineCount, handleChangeWidth, handleConfigurationFormSubmit]);
+  }, [changeHeight, changeMineCount, changeWidth, close, handleConfigurationFormSubmit]);
 
   return <ConfigurationView {...ConfigurationViewProps} />;
 };
