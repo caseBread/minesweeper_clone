@@ -21,3 +21,17 @@ export const Buttons = styled.div`
 
   padding: 0.5rem;
 `;
+
+export const SubmitButton = styled.button`
+  :disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+export const Tooltip = styled.div<{ verifyInputs: boolean }>`
+  visibility: ${(props) => (props.verifyInputs ? 'hidden' : 'visible')};
+  text-align: center;
+  font-size: 0.5rem;
+  color: red;
+`;

@@ -6,7 +6,7 @@ const useInput = (verification?: RegExp): [string, (e: React.ChangeEvent<HTMLInp
     setInput(e.currentTarget.value);
   }, []);
 
-  const verificationInput = useMemo(() => {
+  const verifyInput = useMemo(() => {
     if (verification) {
       return verification.test(input);
     } else {
@@ -14,6 +14,6 @@ const useInput = (verification?: RegExp): [string, (e: React.ChangeEvent<HTMLInp
     }
   }, [input, verification]);
 
-  return [input, handleInput, verificationInput];
+  return [input, handleInput, verifyInput];
 };
 export default useInput;

@@ -10,4 +10,5 @@ export interface IConfigurationView {
   changeWidth: (e: React.ChangeEvent<HTMLInputElement>) => void;
   changeHeight: (e: React.ChangeEvent<HTMLInputElement>) => void;
   changeMineCount: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  canSubmitInputs: boolean;
 }

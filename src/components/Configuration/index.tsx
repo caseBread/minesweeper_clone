@@ -20,6 +20,10 @@ const Configuration = ({ close }: IConfiguration) => {
     [close, dispatch, height, mineCount, width]
   );
 
+  const canSubmitInputs = useMemo(() => {
+    return (!mineCount && !width && !height) || Number(mineCount) < Number(width) * Number(height);
+  }, [height, mineCount, width]);
+
   const ConfigurationViewProps = useMemo(() => {
     return {
       handleSubmit: handleConfigurationFormSubmit,
@@ -27,8 +31,9 @@ const Configuration = ({ close }: IConfiguration) => {
       changeWidth,
       changeHeight,
       changeMineCount,
+      canSubmitInputs,
     };
-  }, [changeHeight, changeMineCount, changeWidth, close, handleConfigurationFormSubmit]);
+  }, [changeHeight, changeMineCount, changeWidth, close, handleConfigurationFormSubmit, canSubmitInputs]);
 
   return <ConfigurationView {...ConfigurationViewProps} />;
 };
