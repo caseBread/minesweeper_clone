@@ -4,7 +4,7 @@ import Modal from '../../components/common/Modal';
 import Configuration from '../../components/Configuration';
 import Edit from '../../components/Edit';
 import Setting from '../../components/Setting';
-import { Wrapper } from './style';
+import * as S from './style';
 
 const Main = () => {
   const [viewModal, setViewModal] = useState(false);
@@ -21,11 +21,11 @@ const Main = () => {
 
   return (
     <>
-      <Wrapper>
+      <S.Wrapper>
         <Edit {...EditProps} />
         <Setting />
         <Board />
-      </Wrapper>
+      </S.Wrapper>
       {viewModal && (
         <Modal close={() => setViewModal(false)}>
           <Configuration close={() => setViewModal(false)} />

@@ -1,17 +1,17 @@
-import { ClosedButton, OpenedButton } from './style';
+import * as S from './style';
 import { IBlockView } from './type';
 
 const BlockView = ({ viewState, isRed, isOpened, handleLeftClickBlock, handleRightClickBlock }: IBlockView) => {
   return (
     <>
       {isOpened ? (
-        <OpenedButton type="button" isRed={isRed}>
+        <S.OpenedButton type="button" isRed={isRed}>
           {viewState}
-        </OpenedButton>
+        </S.OpenedButton>
       ) : (
-        <ClosedButton type="button" onClick={handleLeftClickBlock} onContextMenu={handleRightClickBlock}>
+        <S.ClosedButton type="button" onClick={handleLeftClickBlock} onContextMenu={handleRightClickBlock}>
           {viewState}
-        </ClosedButton>
+        </S.ClosedButton>
       )}
     </>
   );
