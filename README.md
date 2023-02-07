@@ -1,5 +1,7 @@
 # Web MineSweeper
 
+<img src="https://user-images.githubusercontent.com/92029332/217206721-582ab015-69bd-47c3-be42-958a574fdaa8.gif" width="200" height="200">
+
 ## 프로젝트 소개
 
 윈도우 기본게임이었던 지뢰찾기 게임을 웹 상에서 구현한 프로젝트입니다.
@@ -22,6 +24,7 @@ npx serve -s build
 
 ## 기능 목록
 
+- [x] 블럭을 클릭할 때 주변에 있는 지뢰의 개수를 표시
 - [x] 타이머
 - [x] 난이도 변경
     - [ ] 초보자, 중급자, 상급자 모드
