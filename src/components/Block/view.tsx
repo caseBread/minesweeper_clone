@@ -5,7 +5,7 @@ const BlockView = ({ viewState, isRed, isOpened, handleLeftClickBlock, handleRig
   return (
     <>
       {isOpened ? (
-        <S.OpenedButton type="button" isRed={isRed}>
+        <S.OpenedButton type="button" isRed={isRed} number={viewState}>
           {viewState}
         </S.OpenedButton>
       ) : (

@@ -29,3 +29,26 @@ export const getBlockState = (blockFlag: number, gameState: number): string | nu
       throw new Error(`정의되지 않은 block flag 입니다. : ${blockFlag}`);
   }
 };
+
+export const getColorByNumber = (number: string | null) => {
+  switch (number) {
+    case '1':
+      return 'Blue';
+    case '2':
+      return 'Green';
+    case '3':
+      return 'Red';
+    case '4':
+      return 'Purple';
+    case '5':
+      return 'Maroon';
+    case '6':
+      return 'Turquoise';
+    case '7':
+      return 'Black';
+    case '8':
+      return 'Gray';
+    default:
+      return 'White';
+  }
+};

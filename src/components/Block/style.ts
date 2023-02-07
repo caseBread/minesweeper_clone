@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getColorByNumber } from '../../utils/block';
 
 export const Button = styled.button`
   width: 1rem;
@@ -18,7 +19,8 @@ export const ClosedButton = styled(Button)`
   font-size: 0.5rem;
   color: black;
 `;
-export const OpenedButton = styled(Button)<{ isRed: boolean }>`
+export const OpenedButton = styled(Button)<{ isRed: boolean; number: string | null }>`
   background-color: ${(props) => props.isRed && 'red'};
   padding: 2px;
+  color: ${(props) => getColorByNumber(props.number)};
 `;
