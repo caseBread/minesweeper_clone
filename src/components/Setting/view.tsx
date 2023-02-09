@@ -8,7 +8,7 @@ const SettingView = ({ mineNumber, face, timer, handleGameReset }: ISettingView)
       <S.Face type="button" onClick={handleGameReset}>
         {face}
       </S.Face>
-      <span>{timer}</span>
+      <S.Timer>{timer}</S.Timer>
     </S.Wrapper>
   );
 };
