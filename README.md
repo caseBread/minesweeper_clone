@@ -1,6 +1,7 @@
 # Web MineSweeper
 
-<img src="https://user-images.githubusercontent.com/92029332/217206721-582ab015-69bd-47c3-be42-958a574fdaa8.gif" width="200" height="200">
+![화면_기록_2023-02-09_오후_9_20_54_AdobeExpress](https://user-images.githubusercontent.com/92029332/217812022-f989b1b4-bbf8-480d-90c2-8184ff3d5d3e.gif)
+
 
 ## 프로젝트 소개
 
