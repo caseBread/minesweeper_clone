@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createArray } from '../../utils/array';
-import { BLOCK_FLAG, GAME_FLAG } from '../../utils/constants';
-import { getMineList, getOpenedBlockList, plantMine, searchNearbyMine } from '../../utils/logic';
-import { RootState } from '../store';
+import { createArray } from '@utils/array';
+import { BLOCK_FLAG, GAME_FLAG } from '@utils/constants';
+import { getMineList, getOpenedBlockList, plantMine, searchNearbyMine } from '@utils/logic';
+import { type RootState } from '@redux/store';
 import { initialState } from './state';
 
 const gameSlice = createSlice({
   name: 'game',
-  initialState: initialState,
+  initialState,
   reducers: {
     configuration: (state, action) => {
       state.width = action.payload.width;
@@ -62,8 +62,7 @@ const gameSlice = createSlice({
           /**
            * 하나의 normal칸을 클릭 시 주변에 0이있으면 같이공개 + 없으면 하나만 공개
            */
-          const openedBlockList = getOpenedBlockList(state.board, index, state.width, state.height);
-          openedBlockList.forEach((blockIndex) => {
+          getOpenedBlockList(state.board, index, state.width, state.height).forEach((blockIndex) => {
             state.board[blockIndex] = searchNearbyMine(state.board, blockIndex, state.width);
             state.normalCount--;
           });
@@ -136,12 +135,12 @@ const gameSlice = createSlice({
 
 export const { configuration, resetBoard, activeBlock, controlMark } = gameSlice.actions;
 
-export const selectWidth = (state: RootState) => state.game.width;
-export const selectHeight = (state: RootState) => state.game.height;
-export const selectBoard = (state: RootState) => state.game.board;
-export const selectMineCount = (state: RootState) => state.game.mineCount;
-export const selectNowMineCount = (state: RootState) => state.game.nowMineCount;
-export const selectNormalCount = (state: RootState) => state.game.normalCount;
-export const selectGameState = (state: RootState) => state.game.gameState;
+export const selectWidth = (state: RootState): number => state.game.width;
+export const selectHeight = (state: RootState): number => state.game.height;
+export const selectBoard = (state: RootState): number[] => state.game.board;
+export const selectMineCount = (state: RootState): number => state.game.mineCount;
+export const selectNowMineCount = (state: RootState): number => state.game.nowMineCount;
+export const selectNormalCount = (state: RootState): number => state.game.normalCount;
+export const selectGameState = (state: RootState): number => state.game.gameState;
 
 export default gameSlice;

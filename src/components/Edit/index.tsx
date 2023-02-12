@@ -1,8 +1,8 @@
-import { useMemo } from 'react';
-import { IEdit } from './type';
+import React, { useMemo } from 'react';
+import { type IEdit } from './type';
 import EditView from './view';
 
-const Edit = ({ handleOpenModal }: IEdit) => {
+const Edit: React.FC<IEdit> = ({ handleOpenModal }: IEdit) => {
   const EditViewProps = useMemo(() => {
     return {
       handleOpenModal,

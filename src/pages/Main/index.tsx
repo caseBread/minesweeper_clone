@@ -1,12 +1,12 @@
-import { useCallback, useMemo, useState } from 'react';
-import Board from '../../components/Board';
-import Modal from '../../components/common/Modal';
-import Configuration from '../../components/Configuration';
-import Edit from '../../components/Edit';
-import Setting from '../../components/Setting';
+import React, { useCallback, useMemo, useState } from 'react';
+import Board from '@components/Board';
+import Modal from '@components/common/Modal';
+import Configuration from '@components/Configuration';
+import Edit from '@components/Edit';
+import Setting from '@components/Setting';
 import * as S from './style';
 
-const Main = () => {
+const Main: React.FC = () => {
   const [viewModal, setViewModal] = useState(false);
 
   const handleOpenModal = useCallback(() => {
@@ -27,8 +27,16 @@ const Main = () => {
         <Board />
       </S.Wrapper>
       {viewModal && (
-        <Modal close={() => setViewModal(false)}>
-          <Configuration close={() => setViewModal(false)} />
+        <Modal
+          close={() => {
+            setViewModal(false);
+          }}
+        >
+          <Configuration
+            close={() => {
+              setViewModal(false);
+            }}
+          />
         </Modal>
       )}
     </>

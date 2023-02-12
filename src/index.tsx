@@ -6,6 +6,7 @@ import App from './App';
 import './index.css';
 import GlobalStyle from './global/global';
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 

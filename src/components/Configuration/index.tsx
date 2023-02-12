@@ -1,11 +1,11 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import useInput from '../../hooks/useInput';
-import { configuration } from '../../redux/game/slice';
-import { useAppDispatch } from '../../redux/hooks';
-import { IConfiguration } from './type';
+import React, { useCallback, useMemo } from 'react';
+import useInput from '@hooks/useInput';
+import { configuration } from '@redux/game/slice';
+import { useAppDispatch } from '@redux/hooks';
+import { type IConfiguration } from './type';
 import ConfigurationView from './view';
 
-const Configuration = ({ close }: IConfiguration) => {
+const Configuration: React.FC<IConfiguration> = ({ close }: IConfiguration) => {
   const dispatch = useAppDispatch();
   const [width, changeWidth] = useInput();
   const [height, changeHeight] = useInput();
@@ -21,7 +21,7 @@ const Configuration = ({ close }: IConfiguration) => {
   );
 
   const canSubmitInputs = useMemo(() => {
-    return (!mineCount && !width && !height) || Number(mineCount) < Number(width) * Number(height);
+    return (mineCount === '' && width === '' && height === '') || Number(mineCount) < Number(width) * Number(height);
   }, [height, mineCount, width]);
 
   const ConfigurationViewProps = useMemo(() => {

@@ -1,8 +1,8 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { Main, Outside, Wrapper } from './style';
-import { IModal } from './type';
+import { type IModal } from './type';
 
-const Modal = ({ children, close }: IModal) => {
+const Modal: React.FC<IModal> = ({ children, close }: IModal) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   return (

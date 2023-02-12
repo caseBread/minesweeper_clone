@@ -1,13 +1,14 @@
-import { Wrapper } from './style';
-import { IEditView } from './type';
+import React from 'react';
+import * as S from './style';
+import { type IEditView } from './type';
 
-const EditView = ({ handleOpenModal }: IEditView) => {
+const EditView: React.FC<IEditView> = ({ handleOpenModal }: IEditView) => {
   return (
-    <Wrapper>
+    <S.Wrapper>
       <button type="button" onClick={handleOpenModal}>
         edit
       </button>
-    </Wrapper>
+    </S.Wrapper>
   );
 };
 export default EditView;

@@ -1,12 +1,11 @@
 import React, { useCallback, useMemo } from 'react';
-import useTimer from '../../hooks/useTimer';
-import { resetBoard, selectGameState, selectNowMineCount } from '../../redux/game/slice';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { getFaceByGameState } from '../../utils/setting';
-
+import useTimer from '@hooks/useTimer';
+import { resetBoard, selectGameState, selectNowMineCount } from '@redux/game/slice';
+import { useAppDispatch, useAppSelector } from '@redux/hooks';
+import { getFaceByGameState } from '@utils/setting';
 import SettingView from './view';
 
-const Setting = () => {
+const Setting: React.FC = () => {
   const dispatch = useAppDispatch();
   const gameState = useAppSelector(selectGameState);
   const nowMineCount = useAppSelector(selectNowMineCount);
@@ -23,8 +22,8 @@ const Setting = () => {
     return {
       mineNumber: nowMineCount,
       face: getFaceByGameState(gameState),
-      timer: timer,
-      handleGameReset: handleGameReset,
+      timer,
+      handleGameReset,
     };
   }, [gameState, handleGameReset, nowMineCount, timer]);
 

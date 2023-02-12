@@ -1,11 +1,5 @@
-import { createArray } from '../../utils/array';
-import {
-  BLOCK_FLAG,
-  DEFAULT_BOARD_HEIGHT,
-  DEFAULT_BOARD_WIDTH,
-  DEFAULT_MINE_COUNT,
-  GAME_FLAG,
-} from '../../utils/constants';
+import { createArray } from '@utils/array';
+import { BLOCK_FLAG, DEFAULT_BOARD_HEIGHT, DEFAULT_BOARD_WIDTH, DEFAULT_MINE_COUNT, GAME_FLAG } from '@utils/constants';
 
 export interface IinitialState {
   width: number; // 보드의 가로길이. 환경설정 시 변경

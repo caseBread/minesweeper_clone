@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import digital from '../../src/fonts/digital.ttf';
+import digital from '@fonts/digital.ttf';
 const GlobalStyle = createGlobalStyle`
 @font-face {
         font-family: 'digital';

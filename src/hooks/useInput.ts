@@ -1,13 +1,15 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
-const useInput = (verification?: RegExp): [string, (e: React.ChangeEvent<HTMLInputElement>) => void, boolean] => {
+type IuseInput = (verification?: RegExp) => [string, (e: React.ChangeEvent<HTMLInputElement>) => void, boolean];
+
+const useInput: IuseInput = (verification) => {
   const [input, setInput] = useState('');
   const handleInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.currentTarget.value);
   }, []);
 
   const verifyInput = useMemo(() => {
-    if (verification) {
+    if (verification != null) {
       return verification.test(input);
     } else {
       return true;

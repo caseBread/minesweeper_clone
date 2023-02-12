@@ -1,7 +1,8 @@
-import { ISettingView } from './type';
+import { type ISettingView } from './type';
 import * as S from './style';
+import React from 'react';
 
-const SettingView = ({ mineNumber, face, timer, handleGameReset }: ISettingView) => {
+const SettingView: React.FC<ISettingView> = ({ mineNumber, face, timer, handleGameReset }: ISettingView) => {
   return (
     <S.Wrapper>
       <span>{mineNumber}</span>

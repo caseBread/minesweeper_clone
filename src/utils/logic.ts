@@ -31,7 +31,7 @@ const shuffleMine = (length: number, mineCount: number, donotMineIndex?: number)
 // shuffleMine이라는 함수를 통해 마인이 들어갈 위치를 랜덤하게 뽑습니다.
 export const plantMine = (board: number[], mineCount: number, index?: number): number[] => {
   const mines = shuffleMine(board.length, mineCount, index);
-  const minePlantedBoard = board.map((x, i) => (mines.indexOf(i) !== -1 ? BLOCK_FLAG.MINE : BLOCK_FLAG.NORMAL));
+  const minePlantedBoard = board.map((x, i) => (mines.includes(i) ? BLOCK_FLAG.MINE : BLOCK_FLAG.NORMAL));
   return minePlantedBoard;
 };
 
@@ -43,7 +43,6 @@ const isNearbyIndex = (nearbyDirection: number[][], index: number, nowIndex: num
   nearbyDirection.forEach((direct) => {
     if (x + direct[0] === nowX && y + direct[1] === nowY) {
       ok = true;
-      return;
     }
   });
   return ok;
@@ -92,14 +91,14 @@ export const getOpenedBlockList = (board: number[], startIndex: number, width: n
     queue.push(startIndex);
   }
 
-  while (queue) {
+  while (queue.length !== 0) {
     const now = queue.shift();
     if (now === undefined) break;
     const [x, y] = [getX(width, now), getY(width, now)];
     for (const direct of nearbyDirection) {
       const [dx, dy] = direct;
       const nowIndex = getIndex(width, x + dx, y + dy);
-      if (0 <= x + dx && x + dx < width && 0 <= y + dy && y + dy < height) {
+      if (x + dx >= 0 && x + dx < width && y + dy >= 0 && y + dy < height) {
         // 방문하지 않았을 경우 result list에 넣는다.
         // 이미 제거했던 칸이면 list에 넣지 않는다.
         if (!visited[nowIndex] && board[nowIndex] < 0) {

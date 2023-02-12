@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { GAME_FLAG } from '../utils/constants';
+import { GAME_FLAG } from '@utils/constants';
 
-interface IuseTimer {
-  (gameState: number): [number, React.Dispatch<React.SetStateAction<number>>];
-}
+type IuseTimer = (gameState: number) => [number, React.Dispatch<React.SetStateAction<number>>];
 
 const useTimer: IuseTimer = (gameState) => {
   const [timer, setTimer] = useState(0);
@@ -27,7 +25,9 @@ const useTimer: IuseTimer = (gameState) => {
         throw new Error(`정의되지 않은 game state입니다. ${gameState}`);
     }
 
-    return () => clearInterval(runTimer.current);
+    return () => {
+      clearInterval(runTimer.current);
+    };
   }, [gameState]);
 
   return [timer, setTimer];

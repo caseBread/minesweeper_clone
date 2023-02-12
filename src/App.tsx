@@ -1,6 +1,7 @@
+import React from 'react';
 import Main from './pages/Main';
 
-const App = () => {
+const App: React.FC = () => {
   return <Main />;
 };
 

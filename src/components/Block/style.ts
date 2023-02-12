@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getColorByNumber } from '../../utils/block';
+import { getColorByNumber } from '@utils/block';
 
 export const Button = styled.button`
   width: 1rem;

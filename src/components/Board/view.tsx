@@ -1,10 +1,11 @@
-import { selectBoard } from '../../redux/game/slice';
-import { useAppSelector } from '../../redux/hooks';
-import Block from '../Block';
+import React from 'react';
+import { selectBoard } from '@redux/game/slice';
+import { useAppSelector } from '@redux/hooks';
+import Block from '@components/Block';
 import * as S from './style';
-import { IBoardView } from './type';
+import { type IBoardView } from './type';
 
-const BoardView = ({ width, height }: IBoardView) => {
+const BoardView: React.FC<IBoardView> = ({ width, height }: IBoardView) => {
   const board = useAppSelector(selectBoard);
 
   return (

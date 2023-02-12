@@ -1,7 +1,14 @@
+import React from 'react';
 import * as S from './style';
-import { IBlockView } from './type';
+import { type IBlockView } from './type';
 
-const BlockView = ({ viewState, isRed, isOpened, handleLeftClickBlock, handleRightClickBlock }: IBlockView) => {
+const BlockView: React.FC<IBlockView> = ({
+  viewState,
+  isRed,
+  isOpened,
+  handleLeftClickBlock,
+  handleRightClickBlock,
+}: IBlockView) => {
   return (
     <>
       {isOpened ? (

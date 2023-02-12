@@ -1,7 +1,8 @@
+import React from 'react';
 import * as S from './style';
-import { IConfigurationView } from './type';
+import { type IConfigurationView } from './type';
 
-const ConfigurationView = ({
+const ConfigurationView: React.FC<IConfigurationView> = ({
   handleSubmit,
   close,
   changeWidth,

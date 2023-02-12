@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo } from 'react';
-import { activeBlock, controlMark, selectGameState } from '../../redux/game/slice';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { RootState } from '../../redux/store';
-import { getBlockState } from '../../utils/block';
-import { BLOCK_FLAG, GAME_FLAG } from '../../utils/constants';
-import { IBlock } from './type';
+import { activeBlock, controlMark, selectGameState } from '@redux/game/slice';
+import { useAppDispatch, useAppSelector } from '@redux/hooks';
+import { type RootState } from '@redux/store';
+import { getBlockState } from '@utils/block';
+import { BLOCK_FLAG, GAME_FLAG } from '@utils/constants';
+import { type IBlock } from './type';
 import BlockView from './view';
 
-const Block = ({ index }: IBlock) => {
+const Block: React.FC<IBlock> = ({ index }: IBlock) => {
   const dispatch = useAppDispatch();
   const blockFlag = useAppSelector((state: RootState) => state.game.board[index]);
   const gameState = useAppSelector(selectGameState);
