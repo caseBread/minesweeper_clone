@@ -45,4 +45,5 @@ const Block: React.FC<IBlock> = ({ index }: IBlock) => {
   return <BlockView {...BlockViewProps} />;
 };
 
-export default Block;
+// BlockView의 props가 같으면 rerendering을 해주지 않는다.
+export default React.memo(Block);
